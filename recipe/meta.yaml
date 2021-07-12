@@ -19,7 +19,8 @@ requirements:
   host:
     - pip
     - python >=2.7
-
+    - setuptools
+    - wheel
   run:
     - anaconda-client
     - conda-pack
@@ -28,6 +29,7 @@ requirements:
     - ruamel_yaml
     - tornado >=4.2
     - jinja2
+    - tqdm
 
 test:
   imports:
