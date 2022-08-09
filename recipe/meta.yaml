@@ -24,11 +24,11 @@ requirements:
   run:
     - anaconda-client
     - conda-pack
+    - jinja2
     - python
     - requests
     - ruamel_yaml
     - tornado >=4.2
-    - jinja2
     - tqdm
 
 test:
