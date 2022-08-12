@@ -1,4 +1,4 @@
-{% set version = "0.11.0" %}
+{% set version = "0.11.1" %}
 
 package:
   name: anaconda-project
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/Anaconda-Platform/anaconda-project/archive/v{{ version }}.tar.gz
-  sha256: 3bd125bd210586fb4adf539493240d28de9bcb2bab81e35a4eb60f382b3cfe63
+  sha256: 87be4f0b3df3d920e210d68f485403ee0ec429d306efc220608d2b9549bfc092
 
 build:
   skip: true  # [py<36]
@@ -24,11 +24,11 @@ requirements:
   run:
     - anaconda-client
     - conda-pack
+    - jinja2
     - python
     - requests
     - ruamel_yaml
     - tornado >=4.2
-    - jinja2
     - tqdm
 
 test:
@@ -50,7 +50,7 @@ about:
     By adding an anaconda-project.yml to a project directory, a single 
     anaconda-project runcommand will be able to set up all dependencies 
     and then launch the project.
-  doc_url: http://anaconda-project.readthedocs.io
+  doc_url: https://anaconda-project.readthedocs.io
   dev_url: https://github.com/Anaconda-Platform/anaconda-project
 
 extra:
