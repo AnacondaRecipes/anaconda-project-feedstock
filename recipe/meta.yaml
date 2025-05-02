@@ -6,13 +6,13 @@ package:
 
 source:
   url: https://github.com/Anaconda-Platform/anaconda-project/archive/v{{ version }}.tar.gz
-  sha256: 87be4f0b3df3d920e210d68f485403ee0ec429d306efc220608d2b9549bfc092
+  sha256: 3a74fc5aa2642ed0881a5c146c65d3f91cc31a00455e7de796b30cb222b6ada4
   patches:              # [py>=312]
     - versioneer.patch  # [py>=312]
 
 build:
   skip: true  # [py<36]
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - anaconda-project = anaconda_project.cli:main
@@ -52,8 +52,8 @@ about:
   license_file: LICENSE.txt
   summary: Tool for encapsulating, running, and reproducing data science projects
   description: |
-    By adding an anaconda-project.yml to a project directory, a single 
-    anaconda-project runcommand will be able to set up all dependencies 
+    By adding an anaconda-project.yml to a project directory, a single
+    anaconda-project runcommand will be able to set up all dependencies
     and then launch the project.
   doc_url: https://anaconda-project.readthedocs.io
   dev_url: https://github.com/Anaconda-Platform/anaconda-project
