@@ -31,9 +31,12 @@ requirements:
     - tqdm
 
 test:
+  requires:
+    - pip
   imports:
     - anaconda_project
   commands:
+    - pip check
     - echo "First of test commands"
     - anaconda-project --help
     - anaconda-project --version
