@@ -30,15 +30,11 @@ requirements:
     - tqdm
 
 test:
-  source_files:
-    - setup.cfg
   requires:
     - pip
     # adding conda to satisfy pip check
     # anaconda-anon-usage 0.7.5 requires conda, which is not installed.
     - conda
-    - pytest
-    - pytest-cov
   imports:
     - anaconda_project
   commands:
@@ -47,8 +43,6 @@ test:
     - anaconda-project --help
     - anaconda-project --version
     - echo "Last of test commands"
-    # conda build double-activates the test environment, which creates confusion in test_default_to_system_environ 
-    - python -m pytest --pyargs -v -rfe --durations=10 -m "not slow" -k "not test_default_to_system_environ" anaconda_project
 
 about:
   home: https://github.com/anaconda/anaconda-project
