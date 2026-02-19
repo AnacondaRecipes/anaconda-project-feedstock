@@ -1,4 +1,4 @@
-{% set version = "0.11.1" %}
+{% set version = "0.12.0" %}
 
 package:
   name: anaconda-project
@@ -6,47 +6,46 @@ package:
 
 source:
   url: https://github.com/Anaconda-Platform/anaconda-project/archive/v{{ version }}.tar.gz
-  sha256: 3a74fc5aa2642ed0881a5c146c65d3f91cc31a00455e7de796b30cb222b6ada4
-  patches:              # [py>=312]
-    - versioneer.patch  # [py>=312]
+  sha256: 2247b120171cdf5210dcebdc23c4b622e89ff9543908766f799b362761b81a34
 
 build:
-  skip: true  # [py<36]
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - anaconda-project = anaconda_project.cli:main
 
 requirements:
-  build:
-    - patch # [unix and py>=312]
-    - m2-patch # [win and py>=312]
   host:
     - pip
     - python
     - setuptools
-    - wheel
   run:
     - anaconda-client
     - conda-pack
     - jinja2
     - python
     - requests
-    - ruamel_yaml
+    - ruamel.yaml >=0.15
     - tornado >=4.2
     - tqdm
 
 test:
+  requires:
+    - pip
+    # adding conda to satisfy pip check
+    # anaconda-anon-usage 0.7.5 requires conda, which is not installed.
+    - conda
   imports:
     - anaconda_project
   commands:
+    - pip check
     - echo "First of test commands"
     - anaconda-project --help
     - anaconda-project --version
     - echo "Last of test commands"
 
 about:
-  home: https://github.com/Anaconda-Platform/anaconda-project
+  home: https://github.com/anaconda/anaconda-project
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
@@ -56,7 +55,7 @@ about:
     anaconda-project runcommand will be able to set up all dependencies
     and then launch the project.
   doc_url: https://anaconda-project.readthedocs.io
-  dev_url: https://github.com/Anaconda-Platform/anaconda-project
+  dev_url: https://github.com/anaconda/anaconda-project
 
 extra:
   recipe-maintainers:
