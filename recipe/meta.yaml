@@ -1,4 +1,4 @@
-{% set version = "0.12.0" %}
+{% set version = "0.13.2" %}
 
 package:
   name: anaconda-project
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/Anaconda-Platform/anaconda-project/archive/v{{ version }}.tar.gz
-  sha256: 2247b120171cdf5210dcebdc23c4b622e89ff9543908766f799b362761b81a34
+  sha256: c5244dc4a0eeb8e52214dd31c4b19a3ac89fa9c7fa3e999cfddaba68faabdfd9
 
 build:
   number: 0
@@ -22,12 +22,14 @@ requirements:
   run:
     - anaconda-client
     - conda-pack
+    - entrypoints
     - jinja2
     - python
     - requests
     - ruamel.yaml >=0.15
     - tornado >=4.2
     - tqdm
+    - tomli  # [py<311]
 
 test:
   requires:
